@@ -1,9 +1,9 @@
-name: Deploy NV Thekua Shop Website
+name: Deploy NV Thekua Shop
 
 on:
   push:
     branches:
-      - main   # Jab main branch update hogi → auto deploy
+      - main
 
 permissions:
   contents: write
@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Upload Website Files
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: .   # Yahi par index.html aur images folder hai
+          path: .   # index.html root me hona chahiye
 
   deploy:
     needs: build
@@ -29,4 +29,5 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
+        
